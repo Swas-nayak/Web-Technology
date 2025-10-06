@@ -1,45 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Styled Page Example</title>
-<link rel="stylesheet" href="style1.css">
-<link rel="stylesheet" href="style2.css">
-<link rel="stylesheet" href="style3.css">
-<link rel="stylesheet" href="style4.css">
-<link rel="stylesheet" href="style0.css">
+  <meta charset="UTF-8" />
+  <title>Single CSS with Class Switching</title>
+  
+  <style>
+    /* Vertical nav on right side */
+    nav {
+      background-color: #f8d7da; /* Light red */
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 140px;
+    }
+    nav button {
+      color: #b30000;
+      padding: 8px 12px;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 4px;
+      border: 2px solid #b30000;
+      background-color: white;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    nav button:hover,
+    nav button:focus {
+      background-color: #f5c6cb;
+      outline: none;
+    }
 
+    /* Container with content taking full height except bottom sidebar */
+    .container {
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 80px); /* leave space for bottom sidebar */
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .content {
+      padding: 40px;
+      text-align: left; /* Left align all text */
+      border-radius: 10px;
+      font-family: Arial, sans-serif;
+      flex-grow: 1;
+      width: 100%;
+      max-width: 800px;
+      box-sizing: border-box;
+    }
+
+    #message {
+      border: 3px solid #b30000;
+      padding: 15px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .menu-instruction {
+      margin-bottom: 30px;
+      font-style: italic;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .sidebar {
+      width: 100%;
+      padding: 20px;
+      border-radius: 10px 10px 0 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      box-sizing: border-box;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+
+    body.style1 {
+      background-color: #e0f7fa;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    body.style1 .sidebar {
+      background-color: #00acc1;
+    }
+    body.style1 .content {
+      background-color: #b2ebf2;
+      color: #000;
+    }
+    body.style2 {
+      background-color: #fff0f5;
+      font-family: Verdana, sans-serif;
+      margin: 0;
+    }
+    body.style2 .sidebar {
+      background-color: #e91e63;
+    }
+    body.style2 .content {
+      background-color: #f8bbd0;
+      color: #000;
+    }
+    body.style3 {
+      background-color: #f3e5f5;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+    }
+    body.style3 .sidebar {
+      background-color: #8e24aa;
+    }
+    body.style3 .content {
+      background-color: #e1bee7;
+      color: #000;
+    }
+    body.style4 {
+      background-color: #fff8e1;
+      font-family: Tahoma, sans-serif;
+      margin: 0;
+    }
+    body.style4 .sidebar {
+      background-color: #ff9800;
+    }
+    body.style4 .content {
+      background-color: #ffe0b2;
+      color: #000;
+    }
+    body.no-style {
+      all: unset;
+      display: block;
+      padding: 20px;
+      font-family: initial;
+    }
+    body.no-style nav {
+      all: unset;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #f8d7da;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      color: #b30000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 140px;
+    }
+    body.no-style nav button {
+      color: #b30000;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 4px;
+      padding: 8px 12px;
+      border: none;
+      background: none;
+      font-weight: bold;
+    }
+  </style>
 </head>
-<div class="style-switcher">
- <a href="?style=style1.css">Stylesheet 1</a>
+<body class="style1">
+<h3 style="text-align: center;" >Swasthi S Nayak<br>4MW23CS170</h3>
+  <nav>
+    <button onclick="setStyle('style1')">Stylesheet 1</button>
+    <button onclick="setStyle('style2')">Stylesheet 2</button>
+    <button onclick="setStyle('style3')">Stylesheet 3</button>
+    <button onclick="setStyle('style4')">Stylesheet 4</button>
+    <button onclick="setStyle('no-style')">No Stylesheet</button>
+  </nav>
 
-  <a href="style2.css">Stylesheet 2</a>
-  <a href="style3.css">Stylesheet 3</a>
-  <a href="style4.css">Stylesheet 4</a>
-  <a href="style0.css">No Stylesheet</a>
-</div>
-<div id="container">
-<div>
-<h2> Welcome to my HomePage</h2>
-<h4>Swasthi S nayak<br> 4MW23CS170</h4>
-<h3> Use the many to select different StyleSheets</h3>
-</div>
-<div>
-<h3> Same Page Different Stylesheets</h3>
+  <div class="container">
+    <main class="content">
+      <h1 id="message">Welcome to My HomePage</h1>
+      <h4 class="menu-instruction">Use the menu to select different stylesheets</h4>
+      <h2>Same page, different stylesheets</h2>
+      <p>
+       This is a demonstration of how different stylesheets can change the layout of your HTML page. You can change the layout of this page by selecting different stylesheets in a menu, or by selecting one of the following links:
+      </p>
+      <h2>No styles</h2>
+      <p>
+       This page uses DIV elements to group different sections of the html page. Click here to see how the page looks like with no stylesheet.
+      </p>
+    </main>
+  </div>
 
-<p> This is a demonstration of how different stylesheets can change the layout of your HTML page. you can change the layout of this page by selecting different style sheets in the menu, it by selecting one of the following links:
-<a href="style1.css" target="_blank">Stylesheet1</a><a href="style2.css" target="_blank">Stylesheet2</a>
-<a href="style3.css" target="_blank">Stylesheet3</a>
-<a href="style4.css" target="_blank">Stylesheet4</a>
-.</p>
-<h3>No Style</h3>
-<p>This page uses DIV elements to group different sections of html page. Click here to see how the page looks like with no stylesheets<br><a href="style0.css" target="_blank">NoStylesheet</a></p>
-</div>
-<div>
-<h4> Side-bar</h4>
+  <aside class="sidebar">
+    <h2>side-bar</h2>
+    <p>lorem ipsum dolor sit amet, consectetuer adipisoing elit, sed diam nonummy nibh euismod tincidunt ut</p>
+  </aside>
 
-<p> lorem ipusum dolor sit amet,consectuter lorem ipusum dolor sit amet,consectuterlorem ipusum dolor sit amet,consectuterlorem ipusum dolor sit amet,consectuterlorem ipusum dolor sit amet,consectuter.</p>
-</div>
-</div>
-</body></html>
+  <script>
+    function setStyle(styleName) {
+      const body = document.body;
+      body.className = '';  
+      body.classList.add(styleName);  
+    }
+  </script>
+
+</body>
+</html>
